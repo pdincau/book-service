@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: Book Service
+
+server:
+  port:
+    0
+
+evaluations.url: http://localhost:9991/evaluations/
