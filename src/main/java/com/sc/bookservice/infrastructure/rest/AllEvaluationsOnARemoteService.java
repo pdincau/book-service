@@ -11,16 +11,17 @@ import static java.util.Arrays.asList;
 
 public class AllEvaluationsOnARemoteService implements AllEvaluations {
 
-    private String url;
+    private String evaluationServiceId;
+    private RestTemplate template;
 
-    public AllEvaluationsOnARemoteService(String url) {
-        this.url = url;
+    public AllEvaluationsOnARemoteService(String evaluationServiceId, RestTemplate template) {
+        this.evaluationServiceId = evaluationServiceId;
+        this.template = template;
     }
 
     @Override
     public List<Evaluation> forBookWithIsbn(String isbn) {
-        RestTemplate template = new RestTemplate();
-        ResponseEntity<Evaluation[]> response = template.getForEntity(url + isbn, Evaluation[].class);
+        ResponseEntity<Evaluation[]> response = template.getForEntity("http://{evaluationServiceId}/evaluations/{isbn}", Evaluation[].class, evaluationServiceId, isbn);
         return asList(response.getBody());
     }
 }
