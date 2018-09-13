@@ -14,3 +14,5 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 evaluations.service.id: book-evaluation
+
+management.endpoints.web.exposure.include: hystrix.stream
