@@ -1,6 +1,7 @@
 package com.sc.bookservice.infrastructure.web;
 
-import com.sc.bookservice.domain.*;
+import com.sc.bookservice.domain.BookDetail;
+import com.sc.bookservice.domain.BookDetailService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,8 @@ public class BookDetailController {
 
     @GetMapping("/books")
     List<BookDetail> all() {
-       List<BookDetail> allBookDetails = detailService.allDetails();
+        System.out.println("Give me some info please");
+        List<BookDetail> allBookDetails = detailService.allDetails();
         return allBookDetails;
     }
 
